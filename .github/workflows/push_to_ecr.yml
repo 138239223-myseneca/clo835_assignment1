@@ -27,7 +27,7 @@ jobs:
         AWS_REGION: us-east-1
 
     -name: Set IMAGE_TAG
-      id: set-image-tag
+      id:   set-image-tag
       run: echo "::set-output name=tag::v${{ github.run_number }}"
 
     - name: Build, test, tag, and push images to Amazon ECR
