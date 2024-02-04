@@ -26,12 +26,16 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         AWS_REGION: us-east-1
 
+    -name: Set IMAGE_TAG
+      id: set-image-tag
+      run: echo "::set-output name=tag::v${{ github.run_number }}"
+
     - name: Build, test, tag, and push images to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY_WEB: clo835-webapp-image
         ECR_REPOSITORY_DB: clo835-mysql-image
-        IMAGE_TAG: v1
+        IMAGE_TAG: ${{ steps.set-image-tag.outputs.tag }}
       run: |
         ls -ltra
         # Docker build
