@@ -5,15 +5,11 @@ on:
     branches: [ dev ]
 
 jobs:
-  
   build:
-    
     name: Build Image
     runs-on: ubuntu-latest
 
-   
     steps:
-
     - name: Check out code
       uses: actions/checkout@v2
 
@@ -26,7 +22,7 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         AWS_REGION: us-east-1
 
-    -name: Set IMAGE_TAG
+    - name: Set IMAGE_TAG
       id:   set-image-tag
       run: echo "::set-output name=tag::v${{ github.run_number }}"
 
@@ -41,7 +37,6 @@ jobs:
         # Docker build
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_WEB:$IMAGE_TAG .
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY_DB:$IMAGE_TAG -f Dockerfile_mysql .
-        
         
         # Docker push
         docker push $ECR_REGISTRY/$ECR_REPOSITORY_WEB:$IMAGE_TAG
