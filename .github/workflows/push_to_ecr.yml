@@ -29,8 +29,8 @@ jobs:
     - name: Build, test, tag, and push images to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY_WEB: clo835-webapp-images
-        ECR_REPOSITORY_DB: clo835-mysql-images
+        ECR_REPOSITORY_WEB: clo835-webapp-image
+        ECR_REPOSITORY_DB: clo835-mysql-image
         IMAGE_TAG: v1
       run: |
         ls -ltra
