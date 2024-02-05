@@ -24,7 +24,7 @@ jobs:
 
     - name: Set IMAGE_TAG
       id:   set-image-tag
-      run: echo "::set-output name=tag::v${{date '+%H%M%S'}}"
+      run: echo "::set-output name=tag::v${{ steps.set-image-tag.outputs.tag }}"
 
     - name: Build, test, tag, and push images to Amazon ECR
       env:
