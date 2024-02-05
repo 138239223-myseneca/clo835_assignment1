@@ -2,13 +2,16 @@
 
 
 ### Pre-requisite 
->Create an `S3` bucket and configure the necessary settings in `config.tf` based on your preferred naming conventions. Alternatively, you can keep the configurations as they are.
+>Create an `S3` bucket and configure the necessary settings in `config.tf` based on your preferred naming conventions. 
+
+>Alternatively, you can keep the configurations as they are.
 
 
 ### Use command for keypair generation
 
-> ssh-keygen -t rsa  -f webappkp
-
+```bash
+ssh-keygen -t rsa  -f webappkp
+```
 
 ### Run TF command
 
