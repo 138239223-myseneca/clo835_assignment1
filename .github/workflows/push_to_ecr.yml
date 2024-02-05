@@ -24,7 +24,7 @@ jobs:
 
     - name: Set IMAGE_TAG
       id:   set-image-tag
-      run: echo "::set-output name=tag::v${{ github.run_number }}"
+      run: echo "::set-output name=tag::v${{date '+%H%M%S'}}"
 
     - name: Build, test, tag, and push images to Amazon ECR
       env:
